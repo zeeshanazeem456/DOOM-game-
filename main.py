@@ -3,6 +3,7 @@ import sys
 from settings import Settings
 from map import Map
 from player import Player
+from raycasting import RayCasting
 
 class Game:
     def __init__(self):
@@ -25,10 +26,13 @@ class Game:
         self.map = Map(self)
         #here, i make an instance of player class
         self.player = Player(self)
+        self.raycasting = RayCasting(self)
+
 
     def update(self):
 
         self.player.update()
+        self.raycasting.update()
         #this shows the screen
         pg.display.flip()
         self.delta_time = self.clock.tick(self.settings.FPS)
@@ -49,7 +53,7 @@ class Game:
     def run(self):
         #Our GAMELOOP:
         while True:
-            #First, We check events
+            #First,I check events that occur in my game
             self.check_events()
             self.update()
             self.draw()

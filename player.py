@@ -81,13 +81,13 @@ class Player:
         y = self.y * tile
 
         # Draw direction line
-        pg.draw.line(
+        """pg.draw.line(
             self.game.screen, 'yellow',
             (x, y),
             (x + self.settings.WIDTH * math.cos(self.angle),
             y + self.settings.WIDTH * math.sin(self.angle)),
             2
-        )
+        )"""
 
         # Draw player circle
         pg.draw.circle(self.game.screen, 'green', (x, y), 15)

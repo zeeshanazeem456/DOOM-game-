@@ -19,7 +19,7 @@ class Map:
             [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ]
         #Here i have set the tile size which satisfies my resolution
-        self.TILE_SIZE = 62
+        self.TILE_SIZE = self.game.settings.TILE_SIZE
         #This is basically a dictionary
         #It stores all the co-ordinate of the walls in the game
         self.world_map = {}
