@@ -4,6 +4,7 @@ from settings import Settings
 from map import Map
 from player import Player
 from raycasting import RayCasting
+from object_renderer import ObjectRenderer
 
 class Game:
     def __init__(self):
@@ -26,6 +27,7 @@ class Game:
         self.map = Map(self)
         #here, i make an instance of player class
         self.player = Player(self)
+        self.object_renderer = ObjectRenderer(self)
         self.raycasting = RayCasting(self)
 
 
@@ -41,8 +43,9 @@ class Game:
 
     def draw(self):
         self.screen.fill('black')
-        #self.map.draw()
-        #self.player.draw()
+        self.object_renderer.draw()
+        self.map.draw()
+        self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():

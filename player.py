@@ -66,12 +66,13 @@ class Player:
         return (x,y) not in self.game.map.world_map
     
     def check_wall_collision(self,dx,dy):
+        scale = self.settings.PLAYER_SIZE_SCALE / self.game.delta_time
         #This check if the x co-ordinate of our player is inside the wall
-        if self.check_wall(int(self.x + dx),int(self.y)):
+        if self.check_wall(int(self.x + dx * scale),int(self.y)):
             #if the future co-ordinates of x (self. + dx) are not inside the wall
             #dx which is the change in position gets added to x
             self.x  += dx
-        if self.check_wall(int(self.x),int(self.y + dy)):
+        if self.check_wall(int(self.x),int(self.y + dy * scale)):
             self.y += dy
 
     def draw(self):
