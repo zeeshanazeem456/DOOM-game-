@@ -19,7 +19,7 @@ class Settings:
         #Field of View
         self.FOV = math.pi/3
         self.HALF_FOV = self.FOV / 2
-        self.NUM_RAYS = self.WIDTH//2
+        self.NUM_RAYS = self.WIDTH
         self.HALF_NUM_RAYS = self.NUM_RAYS//2
         self.DELTA_ANGLE = self.FOV / self.NUM_RAYS
         self.MAX_DEPTH = 20

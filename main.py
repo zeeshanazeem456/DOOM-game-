@@ -53,7 +53,7 @@ class Game:
     def run(self):
         #Our GAMELOOP:
         while True:
-            #First,I check events that occur in my game
+            #First,I check events that occur in my game 
             self.check_events()
             self.update()
             self.draw()

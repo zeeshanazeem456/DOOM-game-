@@ -61,7 +61,8 @@ class RayCasting:
             #projection
             proj_height = self.settings.SCREEN_DIST / (depth + 0.0001)
             #Draw walls
-            color = [255/(1+depth ** 5 * 0.00002)] * 3
+            intensity = 255 / (1 + depth ** 5 * 0.00002)
+            color = (0,int(intensity),0)
             pg.draw.rect(self.game.screen,color,
                          (int(ray * self.settings.SCALE),int(self.settings.HALF_HEIGHT - proj_height // 2),self.settings.SCALE,int(proj_height)))
 
