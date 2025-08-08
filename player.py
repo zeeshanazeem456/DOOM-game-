@@ -56,10 +56,11 @@ class Player:
         self.check_wall_collision(dx,dy)
 
         #Rotation logic
-        if keys[pg.K_LEFT]:
+        """if keys[pg.K_LEFT]:
             self.angle -= self.settings.PLAYER_ROT_SPEED * self.game.delta_time
         if keys[pg.K_RIGHT]:
-            self.angle += self.settings.PLAYER_ROT_SPEED * self.game.delta_time
+            self.angle += self.settings.PLAYER_ROT_SPEED * self.game.delta_time"""
+        self.angle %= math.tau
 
     def check_wall(self,x,y):
         #This will return true if the (x,y) are not inside the wall
@@ -92,10 +93,19 @@ class Player:
 
         # Draw player circle
         pg.draw.circle(self.game.screen, 'green', (x, y), 15)
-        
+
+    def mouse_movement(self):
+        mx,my = pg.mouse.get_pos()
+        if mx < self.settings.MOUSE_BORDER_LEFT or mx > self.settings.MOUSE_BORDER_RIGHT:
+            pg.mouse.set_pos([self.settings.HALF_WIDTH,self.settings.HALF_HEIGHT])
+        self.rel = pg.mouse.get_rel()[0]
+        self.rel = max(-self.settings.MAX_REL,min(self.settings.MAX_REL,self.rel))
+        self.angle += self.rel * self.settings.MOUSE_SENSIVITY * self.game.delta_time
+
     def update(self):
         self.movement()
-
+        self.mouse_movement()
+        
     @property
     def pos(self):
         return self.x,self.y

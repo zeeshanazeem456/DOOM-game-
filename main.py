@@ -10,6 +10,7 @@ class Game:
     def __init__(self):
         """Contructor for the main game class"""
         pg.init()
+
         #Here i made an instance of my settings class
         self.settings = Settings()
         #Here i made the window of my game
@@ -20,6 +21,9 @@ class Game:
         #Here, i initialize the clock for my game
         self.clock = pg.time.Clock()
         #####Start the game here#####
+        pg.mouse.set_visible(False)
+        pg.mouse.set_pos(self.settings.HALF_WIDTH, self.settings.HALF_HEIGHT)
+        pg.event.set_grab(True)  # Lock mouse to the game window
         self.new_game()
 
     def new_game(self):
@@ -32,7 +36,6 @@ class Game:
 
 
     def update(self):
-
         self.player.update()
         self.raycasting.update()
         #this shows the screen
@@ -42,10 +45,10 @@ class Game:
         pg.display.set_caption(f'{self.clock.get_fps():.1f}')
 
     def draw(self):
-        self.screen.fill('black')
+        #self.screen.fill('black')
         self.object_renderer.draw()
-        self.map.draw()
-        self.player.draw()
+        #self.map.draw()
+        #self.player.draw()
 
     def check_events(self):
         for event in pg.event.get():
